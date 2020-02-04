@@ -1,0 +1,14 @@
+{% extends "homepage/base.html" %}
+{% block content %}
+<article class="media content-section">
+    <img class="rounded-circle article-img" src=" {{object.author.profile.image.url}} " </img> <div class="media-body">
+    <div class="article-metadata">
+        <a class="mr-2" href="#">{{ object.author }}</a>
+        <small class="text-muted">{{ object.created_on|date:"F d, Y" }}</small>
+        <!--see date formatting on django docs -->
+    </div>
+    <h2 class="article-title">{{ object.title }}</h2>
+    <a href="/{{ object.appname}}/index/ "> Click here to see the project</a>
+    </div>
+</article>
+{% endblock content %}
