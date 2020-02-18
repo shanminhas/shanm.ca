@@ -1,6 +1,6 @@
 .landing-section {
-    min-height: 100vh;
-    width: 100vw;
+    min-height: 10vh;
+    width: 10vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,8 +14,8 @@
 
   .landing-section-content {
     padding: 2rem;
-    background: rgba(0,0,0,0.5);
-    width: 100vw;
+    background: rgba(0, 0, 0, 0.20);
+    width: 10vw;
     display: flex; 
     align-items: center;
     justify-content: center;

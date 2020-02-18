@@ -4,14 +4,20 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
 from django.core.exceptions import ValidationError
 
+ACCTYPE = (
+    (0, "Problem Giver"),
+    (1, "Problem Solver")
+)
+
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
+    account_type = forms.ChoiceField(choices=ACCTYPE)
 
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'username',
-                  'email', 'password1', 'password2']
+                  'email', 'password1', 'password2', 'account_type']
 
     def clean_first_name(self):
         if self.cleaned_data["first_name"].strip() == '':
@@ -26,10 +32,12 @@ class UserRegisterForm(UserCreationForm):
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
+    account_type = forms.ChoiceField(choices=ACCTYPE)
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username', 'email']
+        fields = ['first_name', 'last_name',
+                  'username', 'email', 'account_type']
 
     def clean_first_name(self):
         if self.cleaned_data["first_name"].strip() == '':

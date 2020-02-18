@@ -1,14 +1,7 @@
-<html>
-{% load static %}
-<title>fIRST 2020</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+{% extends "polls/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
 
-<header class="header">
-    <div class="header-text">Sign in via:</div>
-    <a href="#" class="header-link">Heaven</a>
-    <a href="#" class="header-link">Hell</a>
-</header>
 <section class="landing-section landing-main">
     <div class="landing-section-content">
         <h1 class="nav-link">
@@ -41,21 +34,5 @@
         </p>
     </div>
 </section>
-<section class="landing-section langing-features">
-    <section class="landing-feature feature-music-services">
-        <h2>Just <span class="brand-text">GO AWAY</span> you nerd</h2>
-        <ul>
-            <li>Heaven</li>
-            <li>Hell</li>
-        </ul>
-    </section>
-    <section class="landing-feature feature-notifications">
-        <h2>Have some <span class="brand-text">toast</span> whenever you want</h2>
-        <ul>
-            <li>BUTTER</li>
-            <li>JAM</li>
-        </ul>
-    </section>
-</section>
 
-</html>
+{% endblock content %}

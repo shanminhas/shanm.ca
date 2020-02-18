@@ -1,0 +1,38 @@
+<html>
+{% load static %}
+<title>fIRST 2020</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+
+<header class="header">
+    <div class="header-text">Links</div>
+    <a href="/polls/index/" class="header-link">Polls</a>
+    <a href="#" class="header-link">Hell</a>
+    <a href="/" class="header-link">Home Page</a>
+</header>
+
+<section class="landing-section langing-features">
+    <h2>Just <span class="brand-text">GO AWAY</span> you nerd</h2>
+    <ul>
+        <li>Heaven</li>
+        <li>Hell</li>
+    </ul>
+    <div class="col-md-8">
+        {% if messages %}
+        {% for message in messages %}
+        <div class=" alert alert-{{ message.tags}}">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% block content %}{% endblock %}
+    </div>
+    <h2>Have some <span class="brand-text">toast</span> whenever you want</h2>
+    <ul>
+        <li>BUTTER</li>
+        <li>JAM</li>
+    </ul>
+</section>
+
+
+</html>

@@ -2,6 +2,7 @@
 {% block content %}
 {% for problem in problems %}
 <article class="media content-section">
+    {% if  user.is_authenticated %}
     <img class="rounded-circle article-img" src=" {{problem.author.profile.image.url}} " </img>
     <div class="media-body">
         <div class="article-metadata">
@@ -14,10 +15,14 @@
             {{ problem.content|safe|truncatewords:"50"|linebreaks }}
             <a href="{% url 'problem-detail' problem.id %}">read more</a>
         </div>
+        {% else %}
+        <h2>Make an account to see the problems !</h2>
+        {% endif %}
     </div>
 </article>
 {% endfor %}
 <!--PAGINATOR-->
+{% if  user.is_authenticated %}
 {% if is_paginated %}
 {% if page_obj.has_previous %}
 <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
@@ -43,6 +48,7 @@
 {% else %}
 <a class="btn btn-dark mb-4" href="">Next</a>
 <a class="btn btn-dark mb-4" href="">Last</a>
+{% endif %}
 {% endif %}
 {% endif %}
 <!--PAGINATOR END-->
