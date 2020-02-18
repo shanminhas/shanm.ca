@@ -1,8 +1,8 @@
 from django.urls import path, include
 from . import views
 from users import views as user_views
-from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView
-from .views import ProblemListView, ProblemDetailView, ProblemCreateView, ProblemUpdateView, ProblemDeleteView, UserListView
+from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView, UserListView
+from .views import ProblemListView, ProblemDetailView, ProblemCreateView, ProblemUpdateView, ProblemDeleteView, UserListViewProblem
 
 urlpatterns = [
     # views.home and make PostListView another url
@@ -22,7 +22,9 @@ urlpatterns = [
     path('about/', views.about, name='techmed-about'),  # about
     path('index/', views.index, name='techmed-index'),
     path('register/', user_views.register, name='register'),
-    path('user/<str:username>', UserListView.as_view(), name='user-posts'),
+    path('user/posts/<str:username>', UserListView.as_view(), name='user-posts'),
+    path('user/problems/<str:username>',
+         UserListViewProblem.as_view(), name='user-problems'),
 
 ]
 """ path('login/', user_views.login, name='login'), """

@@ -1,19 +1,20 @@
 {% extends "techmed/base.html" %}
 {% block content %}
-<h1 class="mb-3">Posts by {{ view.kwargs.username}} (Total = {{ page_obj.paginator.count }})</h1>
-{% for post in posts %}
+<h1 class="mb-3">Problems by {{ view.kwargs.username}} (Total = {{ page_obj.paginator.count }})</h1>
+{% for problem in problems %}
 <article class="media content-section">
-    <img class="rounded-circle article-img" src=" {{post.author.profile.image.url}} " </img> <div class="media-body">
-    <div class="article-metadata">
-        <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
-        <small class="text-muted">{{ post.created_on|date:"F d, Y" }}</small>
-        <!--see date formatting on django docs -->
-    </div>
-    <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
-    <div class="article-content">
-        {{ post.content|safe|truncatewords:"50"|linebreaks }}
-        <a href="{% url 'post-detail' post.id %}">read more</a>
-    </div>
+    <img class="rounded-circle article-img" src=" {{problem.author.profile.image.url}} " </img>
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="{% url 'user-problems' problem.author.username %}">{{ problem.author }}</a>
+            <small class="text-muted">{{ problem.created_on|date:"F d, Y" }}</small>
+            <!--see date formatting on django docs -->
+        </div>
+        <h2><a class="article-title" href="{% url 'problem-detail' problem.id %}">{{ problem.title }}</a></h2>
+        <div class="article-content">
+            {{ problem.content|safe|truncatewords:"50"|linebreaks }}
+            <a href="{% url 'problem-detail' problem.id %}">read more</a>
+        </div>
     </div>
 </article>
 {% endfor %}

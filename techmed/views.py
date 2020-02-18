@@ -142,3 +142,14 @@ class ProblemDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == post.author:
             return True
         return False
+
+
+class UserListViewProblem(ListView):
+    model = Problem
+    template_name = 'techmed/user_problems.html'  # <app>/<model>_<viewtype>.html
+    context_object_name = 'problems'
+    paginate_by = 1
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Problem.objects.filter(author=user)
